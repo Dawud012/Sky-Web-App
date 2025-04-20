@@ -1,35 +1,101 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-#model creation
+# --------------------------
+# Department & Team
+# --------------------------
+
+class Department(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+# Represents a department in the company.
+
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name} ({self.department.name})"
+
+# Represents a team that belongs to a department.
+
+# --------------------------
+# UserProfile (extension of default User)
+# --------------------------
+
+class UserProfile(models.Model):
+    ROLE_CHOICES = [
+        ('Engineer', 'Engineer'),
+        ('Team Leader', 'Team Leader'),
+        ('Department Leader', 'Department Leader'),
+        ('Senior Manager', 'Senior Manager'),
+    ]
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.role}"
+
+
+
+
+# --------------------------
+# Health Check System
+# 
+# --------------------------
 
 class HealthCard(models.Model):
-    card_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     description = models.TextField()
 
     def __str__(self):
-        return self.card_name
-    
+        return self.name
+# Health cards represent criteria to vote on.
+
 class Session(models.Model):
-    session_date = models.DateField()
-    status = models.CharField(max_length=20, choices=[('Active', 'Active'), ('Closed', 'Closed')])
+    STATUS_CHOICES = [
+        ('Active', 'Active'),
+        ('Closed', 'Closed'),
+        ('Pending', 'Pending'),
+    ]
+
+# A session is a voting period for team health checks.
+    date = models.DateField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
 
     def __str__(self):
-        return f"{self.session_date} - {self.status}"
+        return f"{self.date} - {self.status}"
 
 
 class Vote(models.Model):
     COLOR_CHOICES = [
         ('Green', 'Green'),
         ('Yellow', 'Yellow'),
-        ('Red', 'Red')
+        ('Red', 'Red'),
+    ]
+
+    PROGRESS_CHOICES = [
+        ('Improving', 'Improving'),
+        ('Stable', 'Stable'),
+        ('Declining', 'Declining'),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    card = models.ForeignKey(HealthCard, on_delete=models.CASCADE)
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
-    vote = models.CharField(max_length=10, choices=COLOR_CHOICES)
-    note = models.TextField()
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    card = models.ForeignKey(HealthCard, on_delete=models.CASCADE)
+    color = models.CharField(max_length=10, choices=COLOR_CHOICES)
+    progress = models.CharField(max_length=10, choices=PROGRESS_CHOICES)
+    note = models.TextField(blank=True)
+
+    class Meta:
+        unique_together = ['user', 'card', 'session']
 
     def __str__(self):
-        return f"{self.user.username} - {self.card.card_name} - {self.vote}"
+        return f"{self.user.username} - {self.card.name} - {self.color}"
+# Represents one user's vote for a card during a session.

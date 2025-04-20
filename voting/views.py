@@ -7,7 +7,8 @@ def submit_vote(request):
         form = VoteForm(request.POST)
         if form.is_valid():
             vote = form.save(commit=False)
-            vote.user = request.user
+            vote.user = request.user  # current logged in user
+            vote.team = request.user.userprofile.team  # from profile
             vote.save()
             return redirect('vote_summary')
     else:

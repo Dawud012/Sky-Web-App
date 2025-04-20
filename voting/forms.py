@@ -4,4 +4,4 @@ from .models import Vote
 class VoteForm(forms.ModelForm):
     class Meta:
         model = Vote
-        fields = ['card', 'session', 'vote', 'note']
+        fields = ['card', 'session', 'color', 'progress', 'note']

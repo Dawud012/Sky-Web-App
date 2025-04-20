@@ -1,0 +1,13 @@
+{% extends "voting/main.html" %}
+
+
+{% block title %}Submit Vote{% endblock %}
+
+{% block content %}
+  <h2>Submit Your Vote</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
