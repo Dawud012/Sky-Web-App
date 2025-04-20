@@ -1,3 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import VoteForm
+from .models import Vote
 
-# Create your views here.
+def submit_vote(request):
+    if request.method == "POST":
+        form = VoteForm(request.POST)
+        if form.is_valid():
+            vote = form.save(commit=False)
+            vote.user = request.user
+            vote.save()
+            return redirect('vote_summary')
+    else:
+        form = VoteForm()
+    return render(request, 'voting/submit_vote.html', {'form': form})
+
+def vote_summary(request):
+    votes = Vote.objects.all()
+    return render(request, 'voting/vote_summary.html', {'votes': votes})
