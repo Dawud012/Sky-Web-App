@@ -18,7 +18,8 @@
       </ul>
     </div>
 
-    <form method="post" class="vote-form">
+    <form method="post" action="{% url 'submit_vote' card.id %}" class="vote-form">
+
       {% csrf_token %}
       <div class="form-group">
         <label for="{{ form.color.id_for_label }}">Color:</label>
