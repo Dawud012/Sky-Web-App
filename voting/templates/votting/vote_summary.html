@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% block content1 %}
+<h2>Vote Summary</h2>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Card</th>
+    <th>Session</th>
+    <th>Vote</th>
+    <th>Note</th>
+  </tr>
+  {% for vote in votes %}
+  <tr>
+    <td>{{ vote.user }}</td>
+    <td>{{ vote.card }}</td>
+    <td>{{ vote.session }}</td>
+    <td>{{ vote.vote }}</td>
+    <td>{{ vote.note }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
