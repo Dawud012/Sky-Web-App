@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Sky Health Check</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- Sky logo + pink line -->
+  <div class="header-bar">
+    <img src="{% static 'images/skyLogo.webp' %}" alt="Sky Logo" class="sky-logo">
+  </div>
+  <div class="pink-divider"></div>
+
+  <!-- Sign up form -->
+  <div class="container center">
+    <h2>Sign up: Staff</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="name" placeholder="Enter Full Name" required>
+      <input type="email" name="email" placeholder="Enter Email Address" required>
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" placeholder="Enter Password" required>
+        <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+      </div>
+      
+      <div class="password-wrapper">
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+        <span class="toggle-password" onclick="togglePassword('confirm_password', this)">👁️</span>
+      </div>
+      
+    </form>
+
+    <p style="margin-top: 15px; color: gray;">Already have an account?</p>
+    <a href="#" class="button" style="background-color: var(--sky-pink);">Sign up</a>
+
+  </div>
+
+</body>
+</html>
+
+<script>
+    function togglePassword(fieldId, icon) {
+      const input = document.getElementById(fieldId);
+      const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+      input.setAttribute('type', type);
+  
+      // Optionally change icon emoji
+      icon.textContent = type === 'password' ? '👁️' : '🙈';
+    }
+  </script>
+  
