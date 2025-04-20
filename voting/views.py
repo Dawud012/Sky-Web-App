@@ -1,6 +1,7 @@
+from types import DynamicClassAttribute
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import VoteForm
+from .forms import VoteForm , StartVotingForm
 from .models import Vote, HealthCard, Team
 from .forms import StartVotingForm
 
@@ -50,7 +51,7 @@ def submit_vote(request, card_id):
             else:
                 vote.team = request.user.userprofile.team
 
-            vote.session_id = 1  # assuming 1 is the current session
+            vote.session_id = DynamicClassAttribute  # assuming session is dynamic 
             vote.save()
 
             # Redirect to next health card or summary
@@ -63,11 +64,15 @@ def submit_vote(request, card_id):
         # GET request - display form with current card
         form = VoteForm(initial={'card': card})
 
+    progress_percent = (current_index + 1) / total_cards * 100
+
     return render(request, 'voting/submit_vote.html', {
     'form': form,
     'card': card,
-    'current_index': current_index + 1,  # for human-readable display
+    'current_index': current_index + 1,
     'total_cards': total_cards,
     'prev_card_id': cards[current_index - 1].id if current_index > 0 else None,
     'next_card_id': cards[current_index + 1].id if current_index < total_cards - 1 else None,
+    'progress_percent': round(progress_percent, 0),
 })
+

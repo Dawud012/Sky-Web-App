@@ -1,42 +1,51 @@
-{% extends "voting/main.html" %}
-
-{% block title %}Submit Vote{% endblock %}
-
-{% block content %}
-<div class="container">
-  <h2>Submit Your Vote for {{ card.name }}</h2>
-
-  <form method="post">
-    {% csrf_token %}
-
-    <label for="{{ form.card.id_for_label }}">Card:</label>
-    {{ form.card }}
-
-    <label for="{{ form.color.id_for_label }}">Color:</label>
-    {{ form.color }}
-
-    <label for="{{ form.progress.id_for_label }}">Progress:</label>
-    {{ form.progress }}
-
-    <label for="{{ form.note.id_for_label }}">Note:</label>
-    {{ form.note }}
-
-    <div class="navigation-buttons">
-      {% if prev_card_id %}
-        <a href="{% url 'submit_vote' prev_card_id %}" class="button">Back</a>
-      {% endif %}
-      <button type="submit" class="button button-blue">Next</button>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Submit Vote{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h2 class="card-title">{{ card.name }}</h2>
+    <div class="card-instructions">
+      <p><strong>Click one of the colours depending on how <span class="highlight">you</span> feel:</strong></p>
+      <ul class="color-options">
+        <li><span class="circle red"></span> <strong>Red:</strong> It is getting worse around this aspect and requires urgent attention.</li>
+        <li><span class="circle yellow"></span> <strong>Yellow:</strong> There are some concerns however you are more or less stable.</li>
+        <li><span class="circle green"></span> <strong>Green:</strong> It is going well and you are happy with this aspect.</li>
+      </ul>
     </div>
-  </form>
 
-  <div class="progress-info">
-    <p>Card {{ current_index }} of {{ total_cards }}</p>
+    <form method="post" class="vote-form">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="{{ form.color.id_for_label }}">Color:</label>
+        {{ form.color }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.progress.id_for_label }}">Select a state:</label>
+        {{ form.progress }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.note.id_for_label }}">Comments:</label>
+        {{ form.note }}
+      </div>
+      <div class="navigation-buttons">
+        {% if prev_card_id %}
+          <a href="{% url 'submit_vote' prev_card_id %}" class="button back-button">Back</a>
+        {% endif %}
+        <button type="submit" class="button next-button">Next</button>
+      </div>
+    </form>
+
+    <div class="progress-info">
+      <p>Card {{ current_index }} of {{ total_cards }}</p>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" style="width: {{ progress_percent }}%;"></div>
+    </div>
   </div>
-
-  <div class="progress-bar-container">
-    <div class="progress-bar" style="width: {{ current_index|floatformat:0|divisibleby:total_cards }}%;"></div>
-  </div>
-
-  <p><strong>Instructions:</strong> Select a color (Red, Yellow, Green) and a trend (Stable, Improving, Declining), then write a comment if needed.</p>
-</div>
-{% endblock %}
+</body>
+</html>
