@@ -1,0 +1,13 @@
+{% extends "voting/main.html" %}
+
+{% block title %}Start Voting{% endblock %}
+
+{% block content %}
+  <h2>Select Your Team</h2>
+  <a href="{% url 'start_voting' %}">Start Voting</a>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Start</button>
+  </form>
+{% endblock %}

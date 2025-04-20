@@ -1,13 +1,42 @@
 {% extends "voting/main.html" %}
 
-
 {% block title %}Submit Vote{% endblock %}
 
 {% block content %}
-  <h2>Submit Your Vote</h2>
+<div class="container">
+  <h2>Submit Your Vote for {{ card.name }}</h2>
+
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
+
+    <label for="{{ form.card.id_for_label }}">Card:</label>
+    {{ form.card }}
+
+    <label for="{{ form.color.id_for_label }}">Color:</label>
+    {{ form.color }}
+
+    <label for="{{ form.progress.id_for_label }}">Progress:</label>
+    {{ form.progress }}
+
+    <label for="{{ form.note.id_for_label }}">Note:</label>
+    {{ form.note }}
+
+    <div class="navigation-buttons">
+      {% if prev_card_id %}
+        <a href="{% url 'submit_vote' prev_card_id %}" class="button">Back</a>
+      {% endif %}
+      <button type="submit" class="button button-blue">Next</button>
+    </div>
   </form>
+
+  <div class="progress-info">
+    <p>Card {{ current_index }} of {{ total_cards }}</p>
+  </div>
+
+  <div class="progress-bar-container">
+    <div class="progress-bar" style="width: {{ current_index|floatformat:0|divisibleby:total_cards }}%;"></div>
+  </div>
+
+  <p><strong>Instructions:</strong> Select a color (Red, Yellow, Green) and a trend (Stable, Improving, Declining), then write a comment if needed.</p>
+</div>
 {% endblock %}
