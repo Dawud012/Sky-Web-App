@@ -78,24 +78,23 @@ class Vote(models.Model):
         ('Yellow', 'Yellow'),
         ('Red', 'Red'),
     ]
-
+    color = models.CharField(max_length=10, choices=COLOR_CHOICES, blank=False) 
     PROGRESS_CHOICES = [
         ('Improving', 'Improving'),
         ('Stable', 'Stable'),
         ('Declining', 'Declining'),
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    session = models.ForeignKey(Session, on_delete=models.CASCADE)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    card = models.ForeignKey(HealthCard, on_delete=models.CASCADE)
     color = models.CharField(max_length=10, choices=COLOR_CHOICES)
-    progress = models.CharField(max_length=10, choices=PROGRESS_CHOICES)
+    progress = models.CharField(max_length=15, choices=PROGRESS_CHOICES)
     note = models.TextField(blank=True)
+    card = models.ForeignKey(HealthCard, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    session_id = models.IntegerField()
 
     class Meta:
-        unique_together = ['user', 'card', 'session']
+        unique_together = ('user', 'card', 'session_id')
 
     def __str__(self):
         return f"{self.user.username} - {self.card.name} - {self.color}"
-# Represents one user's vote for a card during a session.
