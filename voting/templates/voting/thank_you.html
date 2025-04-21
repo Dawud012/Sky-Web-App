@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  {% include 'includes/navBar.html' %}
+
+  <div class="container center">
+    <h2>Thank you for your submission!</h2>
+    
+    <div class="navigation-buttons">
+      <a href="{% url 'start_voting' %}" class="button button-blue">Vote Again</a>
+      <a href="{% url 'trends' %}">View Results</a>
+
+    </div>
+  </div>
+
+</body>
+</html>
+

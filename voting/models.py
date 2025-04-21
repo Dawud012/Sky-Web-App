@@ -78,7 +78,7 @@ class Vote(models.Model):
         ('Yellow', 'Yellow'),
         ('Red', 'Red'),
     ]
-    color = models.CharField(max_length=10, choices=COLOR_CHOICES, blank=False) 
+
     PROGRESS_CHOICES = [
         ('Improving', 'Improving'),
         ('Stable', 'Stable'),
@@ -91,7 +91,7 @@ class Vote(models.Model):
     card = models.ForeignKey(HealthCard, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    session_id = models.IntegerField()
+    session = models.ForeignKey(Session, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ('user', 'card', 'session_id')

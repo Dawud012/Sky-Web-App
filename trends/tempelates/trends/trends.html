@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trends</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  {% include 'includes/navBar.html' %}
+  <div class="container center">
+    <h2>Trends Page</h2>
+    <p>This is a placeholder for voting trends and results.</p>
+    <a href="{% url 'start_voting' %}" class="button button-blue">Back to Voting</a>
+  </div>
+</body>
+</html>
