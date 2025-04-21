@@ -17,13 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from accounts.views import welcome_view
+
 
 urlpatterns = [
-    
+    path('', welcome_view, name='home'),  # 👈 This makes it the homepage
     path('admin/', admin.site.urls),
     path('voting/', include('voting.urls')),
     path('trends/', include('trends.urls')),
-
+    path('accounts/', include('accounts.urls')),
 ]
-
 

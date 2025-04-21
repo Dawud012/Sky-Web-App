@@ -68,6 +68,33 @@ h1, h2, h3 {
   color: var(--sky-blue);
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 86px);
+}
+
+.welcome-button {
+  background-color: #e4416d;
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  margin: 15px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.welcome-button:hover {
+  opacity: 0.9;
+}
+
 /* Form Fields */
 form input, form select {
   width: 100%;
@@ -327,8 +354,9 @@ form label {
 
 /* Logo positioning */
 .navbar-logo {
-  height: 50px;
-  margin-right: 2rem; /* Space between logo and links */
+  height: 60px;
+  margin-right: 2rem; 
+  width: auto;
 }
 
 /* Navigation links container */
@@ -394,6 +422,7 @@ form label {
   .navbar-logo {
     margin-bottom: 1rem;
     margin-right: 0;
+    max-height: 40px; 
   }
   
   .navbar-links {

@@ -17,3 +17,8 @@ def register_view(request):
 
 def logout_view(request):
     return render(request, 'accounts/login.html')  # temporary
+
+
+def profile_view(request):
+    # You can return some basic information about the user here
+    return render(request, 'accounts/profile.html')
