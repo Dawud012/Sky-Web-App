@@ -1,20 +1,36 @@
 {% load static %}
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head link rel="stylesheet" href="{% static 'css/style.css' %}">
+<head>
   <meta charset="UTF-8">
   <title>{% block title %}Start Voting{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-
+  {% include 'includes/navBar.html' %}
   <div class="form-container">
-    <h2>Select Your Team</h2>
+    <h2>Please select your team and department</h2>
 
     <form method="post">
       {% csrf_token %}
-      {{ form.as_p }}
-      <button class="button button-blue" type="submit">Start</button>
+
+      <div class="dropdown-row">
+        <div class="dropdown-field">
+          <label for="{{ form.team.id_for_label }}">Team:</label>
+          {{ form.team|add_class:"custom-select" }}
+        </div>
+
+        <div class="dropdown-field">
+          <label for="{{ form.department.id_for_label }}">Department:</label>
+          {{ form.department|add_class:"custom-select" }}
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="button button-blue" type="submit">Next</button>
+      </div>
     </form>
   </div>
 
