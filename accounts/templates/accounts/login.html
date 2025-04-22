@@ -3,48 +3,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login - Sky Health</title>
+  <title>Login</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
 
-  <!-- Logo and pink header bar -->
-  <div class="header-bar">
-    <img src="{% static 'images/skyLogo.webp' %}" alt="Sky Logo" class="sky-logo">
+  <!-- Logo Header -->
+  <div class="navbar">
+    <div class="navbar-content">
+      <img src="{% static 'images/skyLogo.webp' %}" alt="Sky Logo" class="navbar-logo">
+    </div>
   </div>
   <div class="pink-divider"></div>
 
   <!-- Login Form -->
-  <div class="container center">
-    <h2>Login</h2>
+  <div class="form-container">
+    <h2 class="card-title">Login</h2>
+
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li style="color: red;">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
 
     <form method="POST">
       {% csrf_token %}
 
-      <input type="email" name="email" placeholder="Email Address" required>
-
-      <div class="password-wrapper">
-        <input type="password" id="password" name="password" placeholder="Password" required>
-        <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+      <!-- Email -->
+      <div class="form-row">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" placeholder="Email Address" required>
       </div>
 
-      <div style="display: flex; justify-content: center;">
-        <button type="submit" class="button" style="background-color: var(--sky-pink);">Login</button>
+      <!-- Password -->
+      <div class="form-row">
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" name="password" id="password" placeholder="Password" required>
+          <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+        </div>
       </div>
-      
-    </form>
 
-    <p style="margin-top: 10px; color: gray;">
-        Forgot password? <a href="{% url 'reset-password' %}" style="color: var(--sky-pink); font-weight: bold;">Reset</a>
+      <!-- Forgot Password -->
+      <p style="margin-top: 10px; color: gray; text-align: left;">
+        Forgot password? 
+        <a href="{% url 'reset-password' %}" style="color: var(--sky-pink); font-weight: bold;">Reset</a>
       </p>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="submit" class="button">Login</button>
+      </div>
+    </form>
   </div>
 
+  <!-- Toggle Password Script -->
   <script>
     function togglePassword(fieldId, icon) {
       const input = document.getElementById(fieldId);
-      const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-      input.setAttribute('type', type);
-      icon.textContent = type === 'password' ? '👁️' : '🙈';
+      const type = input.type === "password" ? "text" : "password";
+      input.type = type;
+      icon.textContent = type === "password" ? "👁️" : "🙈";
     }
   </script>
 

@@ -430,15 +430,29 @@ form label {
     justify-content: center;
   }
   
-  .toggle-password {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 18px;
-    color: var(--input-border);
-    user-select: none;
+  @media (max-width: 768px) {
+    .password-wrapper {
+      position: relative;
+    }
+  
+    .password-wrapper input {
+      padding-right: 40px;
+    }
+  
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--input-border);
+      font-size: 18px;
+    }
   }
+  
+  
+  
+  
+  
   
 }
