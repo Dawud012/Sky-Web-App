@@ -26,7 +26,10 @@ urlpatterns = [
     path('voting/', include('voting.urls')),
     path('trends/', include('trends.urls')),
     path('accounts/', include('accounts.urls')),
+<<<<<<< HEAD
     path('tutorial/', include('tutorial.urls')),
     path('login/', lambda request: redirect('login', permanent=False)),
+=======
+>>>>>>> d831691 (change the css file location)
 ]
 

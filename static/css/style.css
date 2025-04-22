@@ -1,202 +1,439 @@
-Here is the CSS Styling we will be using follow this style:
-
-
 :root {
-    --sky-pink: #e4416d;
-    --sky-blue: #000aff;
-    --neutral-gray: #f9f9f9;
-    --highlight-yellow: #ffe600;
-    --alert-red: #e53935;
-    --success-green: #43a047;
-    --font-color: #000000;
-    --font-size: 16px;
-    --border-radius: 30px;
-    --input-border: #000aff;
-  }
-  
-  /* Reset */
-  body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #ffffff;
-    color: var(--font-color);
-  }
-  
-  /* Buttons */
-  .button {
-    background-color: var(--sky-pink);
-    border: none;
-    border-radius: var(--border-radius);
-    color: white;
-    padding: 12px 24px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s ease;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-  }
-  
-  .button:hover {
-    opacity: 0.9;
-  }
-  
-  .button-blue {
-    background-color: var(--sky-blue);
-    color: white;
-  }
-  
-  .button-outline {
-    background: transparent;
-    border: 2px solid var(--sky-blue);
-    color: var(--sky-blue);
-  }
-  
-  /* Navigation Bar */
-  .navbar {
-    background-color: var(--sky-pink);
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1rem;
-  }
-  
-  .navbar a {
-    background-color: var(--sky-blue);
-    color: white;
-    padding: 10px 20px;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.95rem;
-  }
-  
-  /* Form Styling */
-  form input, form select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid var(--input-border);
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-  
-  form label {
-    font-weight: bold;
-    margin-top: 10px;
-    display: block;
-  }
-  
-  /* Layout helpers */
-  .center {
-    display: flex;
+  --sky-pink: #e4416d;
+  --sky-blue: #000aff;
+  --neutral-gray: #f9f9f9;
+  --highlight-yellow: #ffe600;
+  --alert-red: #e53935;
+  --success-green: #43a047;
+  --font-color: #000000;
+  --font-size: 16px;
+  --border-radius: 30px;
+  --input-border: #000aff;
+}
+
+/* Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #ffffff;
+  color: var(--font-color);
+}
+
+/* Typography & Layout */
+h1, h2, h3 {
+  text-align: center;
+}
+.container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+.highlight {
+  color: var(--sky-pink);
+  font-weight: bold;
+}
+.card-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.button {
+  background-color: var(--sky-pink);
+  border: none;
+  border-radius: var(--border-radius);
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.button:hover {
+  opacity: 0.9;
+}
+.button-blue {
+  background-color: var(--sky-blue);
+  color: white;
+}
+.button-outline {
+  background: transparent;
+  border: 2px solid var(--sky-blue);
+  color: var(--sky-blue);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 86px);
+}
+
+.welcome-button {
+  background-color: #e4416d;
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  margin: 15px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.welcome-button:hover {
+  opacity: 0.9;
+}
+
+/* Form Fields */
+form input, form select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid var(--input-border);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+form label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+.card-instructions, 
+.form-group label {
+  margin-left: 15%;
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* Textarea */
+.comment-box {
+  width: 70%;
+  margin-left: 15%;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+
+/* Navigation buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+/* Next/Back buttons */
+.nav-button {
+  background-color: var(--sky-blue);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Progress Info */
+.progress-info {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Color Circles (Model Style) */
+.color-circles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+  margin: 1.5rem 0;
+}
+
+.color-circle-option {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
+}
+
+.color-circle-option input[type="radio"] {
+  appearance: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  background-color: white;
+  position: relative;
+  margin: 0;
+}
+
+.color-circle-option input[type="radio"]:checked {
+  border: 4px solid black;
+}
+
+.color-circle-option .circle-label {
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.color-circle-option.red input[type="radio"] {
+  background-color: var(--alert-red);
+}
+.color-circle-option.yellow input[type="radio"] {
+  background-color: var(--highlight-yellow);
+}
+.color-circle-option.green input[type="radio"] {
+  background-color: var(--success-green);
+}
+
+/* State selection radio buttons */
+.state-options {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-left: 15%; 
+}
+
+.state-option {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/*  state selection radio buttons */
+.state-option input[type="radio"] {
+  appearance: radio; 
+  width: auto;
+  height: auto;
+  margin-right: 8px;
+  border: none;
+  background: none;
+}
+
+.state-option input[type="radio"]:checked::before {
+  content: none; 
+}
+
+.state-option label {
+  margin-left: 5px;
+  font-size: 1rem;
+}
+
+
+.progress-radio-group {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  width: 70%;
+  margin: 1rem 0 1rem 15%;
+}
+
+.progress-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
+}
+
+.progress-option input[type="radio"] {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border: 2px solid var(--sky-blue);
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+}
+
+.progress-option input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--sky-blue);
+  border-radius: 50%;
+}
+
+/* Custom select dropdown */
+.custom-select {
+  background-color: white;
+  border: 2px solid var(--input-border);
+  border-radius: var(--border-radius);
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--font-color);
+  appearance: none;
+  width: 100%;
+  box-sizing: border-box;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='blue' class='bi bi-caret-down-fill' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.01 2.345 4 3.204 4h9.592c.86 0 1.319 1.01.753 1.658L8.753 11.14a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+}
+.custom-select::-ms-expand {
+  display: none;
+}
+.custom-select:focus,
+.comment-box:focus {
+  border-color: var(--sky-pink);
+  box-shadow: 0 0 0 3px rgba(228, 65, 109, 0.2);
+}
+.dropdown-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.dropdown-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.container {
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+/* navbar with logo left-aligned */
+.navbar {
+  display: flex;
+  justify-content: center; /* Center everything */
+  align-items: center;
+  background-color: white;
+  padding: 0.5rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-content {
+  display: flex;
+  flex-direction: row; /* Force horizontal layout */
+  align-items: center;
+  justify-content: space-between; /* Space between logo and links */
+  width: 100%;
+  max-width: 1200px; /* Control max width of content */
+}
+
+/* Logo positioning */
+.navbar-logo {
+  height: 60px;
+  margin-right: 2rem; 
+  width: auto;
+}
+
+/* Navigation links container */
+.navbar-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* Navigation link buttons */
+.navbar-links a {
+  background-color: var(--sky-blue);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  min-width: 100px;
+}
+
+
+.navbar-links a:hover {
+  background-color: #0000cc;
+}
+
+.pink-divider {
+  background-color: var(--sky-pink);
+  height: 12px;
+  width: 100%;
+  margin: 0;
+}
+
+/* Ensure form elements align properly */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+
+.comment-section {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-section label {
+  align-self: flex-start;
+  margin-left: 15%;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .navbar-content {
     flex-direction: column;
-    align-items: center;
+  }
+  
+  .navbar-logo {
+    margin-bottom: 1rem;
+    margin-right: 0;
+    max-height: 40px; 
+  }
+  
+  .navbar-links {
+    width: 100%;
     justify-content: center;
   }
-  
-  /* Text & Layout */
-  h1, h2, h3 {
-    text-align: center;
-  }
-  
-  .container {
-    padding: 2rem;
-    max-width: 800px;
-    margin: auto;
-  }
-  
-  /* Tutorial & dropdown cards */
-  .dropdown-card {
-    border: 2px solid var(--input-border);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    margin: 1rem 0;
-  }
-  
-  .comment-box {
-    width: 100%;
-    min-height: 80px;
-    border: 2px solid var(--input-border);
-    border-radius: var(--border-radius);
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 1rem;
-  }
-  
-  /* Color indicators */
-  .pink-divider {
-    width: 100%;
-    height: 10px; /* match home page */
-    background-color: var(--sky-pink);
-  }
-  
-  .circle {
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-    vertical-align: middle;
-  }
-  
-  .green { background-color: var(--success-green); }
-  .yellow { background-color: var(--highlight-yellow); }
-  .red { background-color: var(--alert-red); }
-  
-  
-  
-  
-  
-  /* Header bar and logo */
-  .header-bar {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    padding: 10px 20px;
-  }
-  
-  .sky-logo {
-    height: 60px;
-    width: auto;
-  }
-  
-  /* Bold pink divider below logo */
-  .pink-divider {
-    width: 100%;
-    height: 10px; /* back to the original! */
-    background-color: var(--sky-pink);
-  }
-  
-  
+}
 
-  .password-wrapper {
-    position: relative;
-    width: 100%;
-    margin: 10px 0;
-  }
-  
-  .password-wrapper input {
-    width: 100%;
-    padding: 12px 40px 12px 12px;
-    border: 2px solid var(--input-border);
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-  
-  .toggle-password {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 18px;
-    color: var(--input-border);
-    user-select: none;
-  }
-  
+.form-section-label {
+  margin-left: 15%;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}

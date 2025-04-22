@@ -1,0 +1,90 @@
+[
+{
+  "model": "voting.healthcard",
+  "pk": 1,
+  "fields": {
+    "name": "Delivering Value",
+    "description": "Are we delivering value to our customers effectively?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 2,
+  "fields": {
+    "name": "Easy to Release",
+    "description": "Is our release process streamlined and efficient?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 4,
+  "fields": {
+    "name": "Fun",
+    "description": "Are team members enjoying their work and maintaining morale?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 5,
+  "fields": {
+    "name": "Health of Codebase",
+    "description": "Is our codebase clean, maintainable, and free of technical debt?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 6,
+  "fields": {
+    "name": "Learning",
+    "description": "Are we continuously learning and improving our skills?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 7,
+  "fields": {
+    "name": "Mission",
+    "description": "Do we understand and align with our team's mission and goals?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 8,
+  "fields": {
+    "name": "Pawns or Players",
+    "description": "Do team members feel empowered to make decisions or merely follow orders?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 9,
+  "fields": {
+    "name": "Speed",
+    "description": "Are we delivering work at a sustainable and efficient pace?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 10,
+  "fields": {
+    "name": "Suitable Process",
+    "description": "Are our processes well-defined and effective?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 11,
+  "fields": {
+    "name": "Support",
+    "description": "Do we receive adequate support from stakeholders and leadership?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 12,
+  "fields": {
+    "name": "Teamwork",
+    "description": "Are we collaborating effectively as a team?"
+  }
+}
+]

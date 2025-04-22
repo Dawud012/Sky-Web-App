@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
-# --------------------------
+
 # Department & Team
-# --------------------------
+
 
 class Department(models.Model):
     name = models.CharField(max_length=100)
@@ -22,9 +23,9 @@ class Team(models.Model):
 
 # Represents a team that belongs to a department.
 
-# --------------------------
+
 # UserProfile (extension of default User)
-# --------------------------
+
 
 class UserProfile(models.Model):
     ROLE_CHOICES = [
@@ -44,10 +45,9 @@ class UserProfile(models.Model):
 
 
 
-# --------------------------
+
 # Health Check System
-# 
-# --------------------------
+
 
 class HealthCard(models.Model):
     name = models.CharField(max_length=100)
@@ -67,6 +67,12 @@ class Session(models.Model):
 # A session is a voting period for team health checks.
     date = models.DateField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+
+    def save(self, *args, **kwargs):
+        # Automatically close session if it's in the past
+        if self.date < date.today() and self.status == 'Active':
+            self.status = 'Closed'
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.date} - {self.status}"

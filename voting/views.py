@@ -39,6 +39,7 @@ def submit_vote(request, card_id):
     session_id = request.session.get('vote_session_id')
     team_id = request.session.get('selected_team_id')
 
+
     # Ensure session and team exist in the database
     if not session_id or not team_id:
         return redirect('start_voting')
@@ -75,6 +76,8 @@ def submit_vote(request, card_id):
                 return redirect('submit_vote', card_id=next_card.id)
             else:
                 # If it’s the last card, clean up the session and redirect to the thank you page
+                session.status = 'Closed'
+                session.save()
                 request.session.pop('vote_session_id', None)
                 request.session.pop('selected_team_id', None)
                 return redirect('thank_you')
@@ -93,3 +96,6 @@ def submit_vote(request, card_id):
         'prev_card_id': prev_card_id,
         'next_card_id': next_card_id,
     })
+
+def tutorial_view(request):
+    return render(request, 'voting/tutorial.html')
