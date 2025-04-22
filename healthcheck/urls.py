@@ -26,5 +26,6 @@ urlpatterns = [
     path('voting/', include('voting.urls')),
     path('trends/', include('trends.urls')),
     path('accounts/', include('accounts.urls')),
+    path('tutorial/', include('tutorial.urls')),
 ]
 

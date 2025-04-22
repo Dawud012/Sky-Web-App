@@ -42,6 +42,7 @@ INSTALLED_APPS = [
      'voting',
      'trends',
      'widget_tweaks',
+     'tutorial',
 ]
 
 MIDDLEWARE = [
