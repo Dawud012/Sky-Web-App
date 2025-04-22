@@ -21,7 +21,7 @@ from accounts.views import welcome_view
 
 
 urlpatterns = [
-    path('', welcome_view, name='home'),  # 👈 This makes it the homepage
+    path('', welcome_view, name='home'),  
     path('admin/', admin.site.urls),
     path('voting/', include('voting.urls')),
     path('trends/', include('trends.urls')),
