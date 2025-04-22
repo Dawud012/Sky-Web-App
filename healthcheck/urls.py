@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from accounts.views import welcome_view
-
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('', welcome_view, name='home'),  
@@ -27,5 +27,6 @@ urlpatterns = [
     path('trends/', include('trends.urls')),
     path('accounts/', include('accounts.urls')),
     path('tutorial/', include('tutorial.urls')),
+    path('login/', lambda request: redirect('login', permanent=False)),
 ]
 

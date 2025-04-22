@@ -18,10 +18,20 @@
   <div class="container center">
     <h2>Sign up: Staff</h2>
 
+    <!-- Show only error/success messages related to registration -->
+    {% if messages %}
+      {% for message in messages %}
+        {% if 'register' in request.path %}
+          <p style="color: red;">{{ message }}</p>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
     <form method="POST">
       {% csrf_token %}
       <input type="text" name="name" placeholder="Enter Full Name" required>
       <input type="email" name="email" placeholder="Enter Email Address" required>
+      
       <div class="password-wrapper">
         <input type="password" id="password" name="password" placeholder="Enter Password" required>
         <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
@@ -31,25 +41,36 @@
         <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
         <span class="toggle-password" onclick="togglePassword('confirm_password', this)">👁️</span>
       </div>
-      
+
+      <button type="submit" class="button">Sign up</button>
     </form>
 
-    <p style="margin-top: 15px; color: gray;">Already have an account?</p>
-    <a href="#" class="button" style="background-color: var(--sky-pink);">Sign up</a>
-
+    <p>
+      Already have an account?
+      <a href="/login" style="color: #e91e63; text-decoration: none; font-weight: bold;">Log in</a>
+    </p>
   </div>
 
-</body>
-</html>
-
-<script>
+  <script>
     function togglePassword(fieldId, icon) {
       const input = document.getElementById(fieldId);
       const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
       input.setAttribute('type', type);
-  
-      // Optionally change icon emoji
       icon.textContent = type === 'password' ? '👁️' : '🙈';
     }
+
+    // Check password match before submission
+    const form = document.querySelector("form");
+    const password1 = document.querySelector("input[name='password']");
+    const password2 = document.querySelector("input[name='confirm_password']");
+
+    form.addEventListener("submit", function (e) {
+      if (password1.value !== password2.value) {
+        e.preventDefault();
+        alert("Passwords do not match. Please try again.");
+      }
+    });
   </script>
-  
+
+</body>
+</html>

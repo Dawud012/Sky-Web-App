@@ -1,2 +1,52 @@
-<!-- login.html -->
-<h1>Login Page</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Sky Health</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- Logo and pink header bar -->
+  <div class="header-bar">
+    <img src="{% static 'images/skyLogo.webp' %}" alt="Sky Logo" class="sky-logo">
+  </div>
+  <div class="pink-divider"></div>
+
+  <!-- Login Form -->
+  <div class="container center">
+    <h2>Login</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <input type="email" name="email" placeholder="Email Address" required>
+
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+      </div>
+
+      <div style="display: flex; justify-content: center;">
+        <button type="submit" class="button" style="background-color: var(--sky-pink);">Login</button>
+      </div>
+      
+    </form>
+
+    <p style="margin-top: 10px; color: gray;">
+        Forgot password? <a href="{% url 'reset-password' %}" style="color: var(--sky-pink); font-weight: bold;">Reset</a>
+      </p>
+  </div>
+
+  <script>
+    function togglePassword(fieldId, icon) {
+      const input = document.getElementById(fieldId);
+      const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+      input.setAttribute('type', type);
+      icon.textContent = type === 'password' ? '👁️' : '🙈';
+    }
+  </script>
+
+</body>
+</html>

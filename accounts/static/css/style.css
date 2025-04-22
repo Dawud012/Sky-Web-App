@@ -429,11 +429,16 @@ form label {
     width: 100%;
     justify-content: center;
   }
-}
-
-.form-section-label {
-  margin-left: 15%;
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
+  
+  .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--input-border);
+    user-select: none;
+  }
+  
 }
