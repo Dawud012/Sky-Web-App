@@ -20,7 +20,7 @@ def start_voting(request):
             # grab the first health card and send the user there
             first_card = HealthCard.objects.order_by('id').first()
             if first_card:
-                return redirect('submit_vote', card_id=first_card.id)
+                return redirect('tutorial')
     else:
         form = StartVotingForm()
 
@@ -92,12 +92,26 @@ def submit_vote(request, card_id):
     })
 
 
-# Displays tutorial/instruction page (static)
+# Displays tutorial/instruction page
 def tutorial_view(request):
     return render(request, 'voting/tutorial.html')
+
+
+# After the user is done reading the tutorial, it redirects them to the voting page
+@login_required
+def tutorial_view(request):
+    if request.method == "POST":
+        first_card = HealthCard.objects.order_by('id').first()
+        if first_card:
+            return redirect('submit_vote', card_id=first_card.id)
+    
+    return render(request, 'voting/tutorial.html')
+
 
 
 # After a user finishes voting, show them a simple thank you page
 @login_required
 def thank_you(request):
     return render(request, 'voting/thank_you.html')
+
+

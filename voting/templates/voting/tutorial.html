@@ -5,35 +5,57 @@
   <meta charset="UTF-8">
   <title>Tutorial - Sky Health Check</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-
 </head>
 <body>
 
   {% include 'includes/navbar.html' %}
-  <div class="pink-divider"></div>
+  <style>
+    .pink-divider {
+      margin-bottom: 0;
+    }
+    .content {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+  </style>
+  
 
-  <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 75vh; padding-top: 2rem;">
+  <div class="content">
+    <div class="container" style="text-align: center;">
+      <h1>Tutorial to completing health check</h1>
 
-    <h1 style="text-align: center;">Tutorial to completing health check</h1>
-
-    <div style="max-width: 700px; font-size: 1.2rem; margin-top: 2rem;">
-      <ol>
+      <ol style="text-align: left; max-width: 700px; margin: auto; font-size: 1.2rem;">
         <li><strong>Each question will have the name of the topic on top</strong></li>
+
         <li><strong>Use the buttons to select a state depending on how you feel around that topic:</strong>
-          <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
-            <li><span class="circle green"></span> Click on “Green” which means it's going well and you're happy with that question</li>
-            <li><span class="circle yellow"></span> Click “Yellow” if there are some concerns but it’s stable</li>
-            <li><span class="circle red"></span> Click “Red” if things are getting worse and need urgent help</li>
-          </ul>
+          <div class="color-circles">
+            <div class="color-circle-option green">
+              <input type="radio" disabled checked>
+              <span class="circle-label">Green: It’s going well and you're happy with that question</span>
+            </div>
+            <div class="color-circle-option yellow">
+              <input type="radio" disabled checked>
+              <span class="circle-label">Yellow: There are some concerns but it’s stable</span>
+            </div>
+            <div class="color-circle-option red">
+              <input type="radio" disabled checked>
+              <span class="circle-label">Red: It’s getting worse and needs urgent help</span>
+            </div>
+          </div>
         </li>
+
         <li><strong>Use the drop down menu to select a trend for each aspect</strong></li>
         <li><strong>You will be able to add comments in any of the three text fields provided</strong></li>
         <li><strong>Click continue once done</strong></li>
       </ol>
-    </div>
 
-    <a href="/voting" class="button button-blue" style="margin-top: 2rem;">Continue</a>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-actions">
+          <button class="button button-blue" type="submit">Continue</button>
+        </div>
+      </form>
+    </div>
   </div>
 
 </body>
