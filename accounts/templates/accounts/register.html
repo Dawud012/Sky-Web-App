@@ -5,6 +5,25 @@
   <meta charset="UTF-8">
   <title>Staff Sign Up</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper input {
+      padding-right: 40px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--input-border);
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
 
@@ -82,7 +101,6 @@
       icon.textContent = type === "password" ? "👁️" : "🙈";
     }
 
-    // Password match check
     const form = document.querySelector("form");
     form.addEventListener("submit", function (e) {
       const pw = document.getElementById("password");

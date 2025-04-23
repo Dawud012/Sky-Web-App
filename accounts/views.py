@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm
-
+from django.contrib.auth import authenticate, login
 def profile_view(request):
     return render(request, 'accounts/profile.html')
 # Welcome page
@@ -14,8 +14,24 @@ def reset_password(request):
     return render(request, 'accounts/reset_password.html')
 
 # Login page
+
 def login_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('start_voting')  # or whatever page you want
+        else:
+            messages.error(request, "Wrong email or password. Please try again.")
+
     return render(request, 'accounts/login.html')
+
+
+
 
 # Logout (temp)
 def logout_view(request):
@@ -101,3 +117,6 @@ def staff_register(request):
 
 def logout_view(request):
     return render(request, 'accounts/login.html')  # temporary
+
+def register_view(request):
+    return render(request, 'accounts/register.html')
