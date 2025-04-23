@@ -6,11 +6,14 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Submit Vote{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+  {# main stylesheet for layout and styling #}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 <body>
+
+  {# shared navbar across pages #}
   {% include 'includes/navBar.html' %}
   <div class="container">
 
@@ -19,12 +22,13 @@
     <form method="post" action="{% url 'submit_vote' card.id %}" class="vote-form">
       {% csrf_token %}
 
-      <!-- Instruction line -->
+     
+      {# prompt to help user understand what they're voting on #}
       <div class="card-instructions">
         <p><strong>Click one of the colours depending on how <span class="highlight">you</span> feel:</strong></p>
       </div>
 
-      <!-- Color selection -->
+      {# colour rating section #}
       <div class="color-circles">
         {% for radio in form.color %}
           <label class="color-circle-option {{ radio.choice_label|lower }}">
@@ -43,7 +47,7 @@
         {% endfor %}
       </div>
 
-      <!-- State selection -->
+      {# progress state  #}
       <div class="form-group">
         <label>Select a state:</label>
         <div class="progress-radio-group">
@@ -56,13 +60,13 @@
         </div>
       </div>
 
-      <!-- Comments -->
+      {# comment box for optional feedback #}
       <div class="form-group">
         <label for="{{ form.note.id_for_label }}">Comments:</label>
         {{ form.note|add_class:"comment-box" }}
       </div>
 
-      <!-- Navigation buttons -->
+      {# back and next navigation buttons #}
       <div class="navigation-buttons">
         {% if prev_card_id %}
           <a href="{% url 'submit_vote' prev_card_id %}" class="button button-blue">Back</a>
@@ -71,7 +75,7 @@
       </div>
     </form>
 
-    <!-- Progress info -->
+    {# current progress shown below form #}
     <div class="progress-info">
       <p>Card {{ current_index }} of {{ total_cards }}</p>
     </div>

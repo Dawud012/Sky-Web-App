@@ -6,24 +6,30 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Start Voting{% endblock %}</title>
+
+  {# load custom stylesheet #}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-
 </head>
 <body>
+
+  {# include shared navigation bar #}
   {% include 'includes/navBar.html' %}
+
   <div class="form-container">
     <h2>Please select your team and department</h2>
 
+    {# form for selecting team + department to start voting #}
     <form method="post">
       {% csrf_token %}
 
       <div class="dropdown-row">
+        
         <div class="dropdown-field">
           <label for="{{ form.team.id_for_label }}">Team:</label>
           {{ form.team|add_class:"custom-select" }}
         </div>
 
+        
         <div class="dropdown-field">
           <label for="{{ form.department.id_for_label }}">Department:</label>
           {{ form.department|add_class:"custom-select" }}
