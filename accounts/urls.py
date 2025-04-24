@@ -1,6 +1,8 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
+from django.urls import path, include
+
 
 urlpatterns = [
 
@@ -16,6 +18,7 @@ urlpatterns = [
      path('register/', views.staff_register, name='staff-register'),
 
      path('reset-password/', views.reset_password, name='reset-password'),
+    path('trends/', include('trends.urls')),
 
 ]
 
