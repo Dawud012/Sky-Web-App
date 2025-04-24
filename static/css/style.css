@@ -437,3 +437,159 @@ form label {
   margin-bottom: 10px;
   font-weight: bold;
 }
+
+.pink-divider-fixed {
+  height: 6px !important;
+  background-color: #e04174 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+.trend-button {
+  background-color: #e0e0e0;
+  color: black;
+  font-weight: bold;
+  padding: 14px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.trend-button:hover {
+  background-color: #d3d3d3;
+}
+
+/* Trend page layout styling */
+.trend-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Individual graph boxes */
+.trend-box {
+  border: 2px solid var(--sky-blue);
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: white;
+  min-width: 350px;
+  width: 90%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+
+
+.trend-box h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+/* Bar group styling inside graphs */
+.bar-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bar-label {
+  width: 100px;
+  font-weight: bold;
+}
+
+.bar {
+  min-width: 20px;
+  height: 40px;
+  border-radius: 8px;
+  line-height: 40px;
+  padding: 0 1rem;
+  color: white;
+  font-weight: bold;
+  background-color: #ccc;
+}
+
+
+/* Color variants */
+.green-bar {
+  background-color: var(--success-green);
+}
+
+.yellow-bar {
+  background-color: var(--highlight-yellow);
+  color: #000;
+}
+
+.red-bar {
+  background-color: var(--alert-red);
+}
+
+.blue-bar {
+  background-color: var(--sky-blue);
+}
+
+/* Comments section styling */
+.trend-comments {
+  grid-column: span 2;
+}
+
+.comment-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.trend-comment-display {
+  flex-grow: 1;
+  height: 100%;
+  border: 2px solid var(--sky-blue);
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: white;
+  overflow-y: auto;
+}
+
+
+.trend-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.trend-graphs-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%; /* Half the page */
+}
+
+
+.trend-comments-vertical {
+  flex: 1;
+  min-width: 350px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.trend-comments-long {
+  flex: 1;
+  min-width: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 500px;
+}

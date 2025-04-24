@@ -116,11 +116,10 @@ STATICFILES_DIRS = [
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#  Email settings for password reset (Outlook)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'test014518@outlook.com'  # change to your real Outlook email
-EMAIL_HOST_PASSWORD = 'iwfdsulofaldsjsc'  # use app password if 2FA is on
+EMAIL_HOST_USER = 'skywebappsky@gmail.com'
+EMAIL_HOST_PASSWORD = 'rmwn ikgy ngqe ntke'  # NOT your email password (use app password)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

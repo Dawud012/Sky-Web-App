@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ card.name }} - Trend</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  {% include 'includes/navBar.html' %}
+
+  <div class="container">
+    <h1 class="card-title">{{ card.name }}</h1>
+
+    <div class="trend-layout">
+  
+        <!-- Graphs on left -->
+        <div class="trend-graphs-column">
+      
+          <!-- Feelings -->
+          <div class="trend-box">
+            <h3>How <span class="highlight">people</span> feel:</h3>
+            <div class="bar-group">
+              <span class="bar-label">Green</span>
+              <div class="bar green-bar" style="width: calc({{ green }} * 25px);">{{ green }}</div>
+            </div>
+            <div class="bar-group">
+              <span class="bar-label">Yellow</span>
+              <div class="bar yellow-bar" style="width: calc({{ yellow }} * 25px);">{{ yellow }}</div>
+            </div>
+            <div class="bar-group">
+              <span class="bar-label">Red</span>
+              <div class="bar red-bar" style="width: calc({{ red }} * 25px);">{{ red }}</div>
+            </div>
+          </div>
+      
+          <!-- State -->
+          <div class="trend-box">
+            <h3>State:</h3>
+            <div class="bar-group">
+              <span class="bar-label">Stable</span>
+              <div class="bar blue-bar" style="width: calc({{ stable }} * 25px);">{{ stable }}</div>
+            </div>
+            <div class="bar-group">
+              <span class="bar-label">Improving</span>
+              <div class="bar blue-bar" style="width: calc({{ improving }} * 25px);">{{ improving }}</div>
+            </div>
+            <div class="bar-group">
+              <span class="bar-label">Getting worse</span>
+              <div class="bar blue-bar" style="width: calc({{ declining }} * 25px);">{{ declining }}</div>
+            </div>
+          </div>
+      
+        </div>
+      
+        <!-- Comments on right -->
+        <div class="trend-box trend-comments-long">
+            <h3>Comments:</h3>
+            <div class="trend-comment-display">
+              {% for comment in comments %}
+                <p>{{ comment }}</p>
+              {% empty %}
+                <p>No comments submitted.</p>
+              {% endfor %}
+            </div>
+          </div>          
+      
+      </div>
+      
+
+    <!-- Finish Button -->
+    <div class="form-actions">
+      <a href="{% url 'trends' %}" class="button button-blue">Finish</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import placeholder_trends_view
+from . import views
 
 urlpatterns = [
-    path('', placeholder_trends_view, name='trends'),  
+    path('', views.trends_page, name='trends'),
+    path('<int:topic_id>/', views.topic_trends_view, name='topic_trend_detail'),
 ]
