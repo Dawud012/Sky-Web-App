@@ -1,14 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import date
 
-# team and department setup
+
+# Department & Team
+
+
 class Department(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
+# Represents a department in the company.
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
@@ -17,8 +20,12 @@ class Team(models.Model):
     def __str__(self):
         return f"{self.name} ({self.department.name})"
 
+# Represents a team that belongs to a department.
 
-# user roles and profile
+
+# UserProfile (extension of default User)
+
+
 class UserProfile(models.Model):
     ROLE_CHOICES = [
         ('Engineer', 'Engineer'),
@@ -35,14 +42,19 @@ class UserProfile(models.Model):
         return f"{self.user.username} - {self.role}"
 
 
-# models for health checks and team voting process
+
+
+
+# Health Check System
+
+
 class HealthCard(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
 
     def __str__(self):
         return self.name
-
+# Health cards represent criteria to vote on.
 
 class Session(models.Model):
     STATUS_CHOICES = [
@@ -51,20 +63,14 @@ class Session(models.Model):
         ('Pending', 'Pending'),
     ]
 
+# A session is a voting period for team health checks.
     date = models.DateField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
-
-    def save(self, *args, **kwargs):
-        # auto-close sessions if the date is already past
-        if self.date < date.today() and self.status == 'Active':
-            self.status = 'Closed'
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.date} - {self.status}"
 
 
-# user responses to health cards
 class Vote(models.Model):
     COLOR_CHOICES = [
         ('Green', 'Green'),
@@ -80,14 +86,14 @@ class Vote(models.Model):
 
     color = models.CharField(max_length=10, choices=COLOR_CHOICES)
     progress = models.CharField(max_length=15, choices=PROGRESS_CHOICES)
-    note = models.TextField(blank=True)  # optional: user can leave feedback
+    note = models.TextField(blank=True)
     card = models.ForeignKey(HealthCard, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('user', 'card', 'session_id')  # prevent duplicate votes per user/card/session
+        unique_together = ('user', 'card', 'session')
 
     def __str__(self):
         return f"{self.user.username} - {self.card.name} - {self.color}"
