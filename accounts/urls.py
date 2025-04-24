@@ -19,7 +19,8 @@ urlpatterns = [
      path('trends/', include('trends.urls')),
 
      path('reset-password/', views.reset_password, name='reset-password'),
-      path('reset-password/', auth_views.PasswordResetView.as_view(
+    
+    path('reset-password/', auth_views.PasswordResetView.as_view(
         template_name='accounts/registration/password_reset_form.html',
         email_template_name='accounts/registration/password_reset_email.html',
         subject_template_name='accounts/registration/password_reset_subject.txt',
@@ -39,4 +40,10 @@ urlpatterns = [
         template_name='accounts/registration/password_reset_complete.html'
     ), name='password_reset_complete'),
 
+    
+    
+    
+    path('trends/', include('trends.urls')),
+
 ]
+

@@ -129,3 +129,12 @@ def logout_view(request):
 
 def register_view(request):
     return render(request, 'accounts/register.html')
+
+def profile_view(request):
+    user = request.user
+    return render(request, 'accounts/profile.html', {
+        'name': user.first_name,
+        'email': user.email,
+        'team': getattr(user, 'team', 'N/A'),
+        'department': getattr(user, 'department', 'N/A'),
+    })

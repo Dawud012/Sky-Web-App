@@ -5,6 +5,7 @@ from .models import HealthCard, Session, Team, Vote
 from datetime import date
 
 # First step in voting: user picks a team, and we create a new session
+# First step in voting: user picks a team, and we create a new session
 @login_required
 def start_voting(request):
     if request.method == "POST":
@@ -25,6 +26,7 @@ def start_voting(request):
         form = StartVotingForm()
 
     return render(request, 'voting/start_voting.html', {'form': form})
+
 
 
 
