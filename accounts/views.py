@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth import authenticate, login
+
 def profile_view(request):
     return render(request, 'accounts/profile.html')
 # Welcome page
@@ -92,25 +93,33 @@ def reset_password(request):
 # ✅ Staff Registration view (handles form + saving to database)
 def staff_register(request):
     if request.method == 'POST':
-        full_name = request.POST['name']
-        email = request.POST['email']
-        password1 = request.POST['password']
-        password2 = request.POST['confirm_password']
+        full_name = request.POST.get('name')
+        email = request.POST.get('email')
+        password1 = request.POST.get('password')
+        password2 = request.POST.get('confirm_password')
 
+        # Check passwords match
         if password1 != password2:
             messages.error(request, "Passwords do not match.")
             return redirect('register')
 
+        # Check if email is already registered
         if User.objects.filter(username=email).exists():
             messages.error(request, "Email already registered.")
             return redirect('register')
 
-        user = User.objects.create_user(username=email, email=email, password=password1)
+        # Create user
+        user = User.objects.create_user(
+            username=email,
+            email=email,
+            password=password1
+        )
         user.first_name = full_name
-        user.is_staff = True  # optional, if you're marking staff
+        user.is_staff = True     # So it shows in Django admin's staff list
+        user.is_active = True    # Just in case
         user.save()
 
-        messages.success(request, "Account created successfully.")
+        messages.success(request, "Account created successfully. You can now log in.")
         return redirect('login')
 
     return render(request, 'accounts/register.html')
