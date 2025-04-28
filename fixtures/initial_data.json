@@ -1,0 +1,563 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$EEWwF6QmckgwI7MHgCJQWp$tvGE8Fsx812sNpV7tNqHMvrNEKFCO5lLG+qZra+VlCU=",
+    "last_login": "2025-04-28T21:49:05.401Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-28T12:17:38.142Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$uX0hHZDrXsGMyelrAe9YZ8$CIuxN8w0tMGTC2PPPLqrZmck5L2EXZnfHcThZ5hKn8g=",
+    "last_login": "2025-04-28T22:10:14.637Z",
+    "is_superuser": true,
+    "username": "admin@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-28T12:24:10.626Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$UXjphaYNZBBeSyZjnWBrRo$pbcpodAP2sXt/Llaxft0gfLTSP36ehtZ14BPb1Iz25g=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Ali",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-04-28T20:34:50.817Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$RvS9ezm114n7EJlYOi6yJ5$A6NhtxDU36tasTlncdw2Fdj28GFqRbx7wmXQ9DZLkLw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Hossein",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-04-28T20:35:05.871Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$mUxok3nzqvhgXcGivQA7Y1$walzi4ddAZnCmRQjnOZ4vTJoWL/ZRoo+RAA2ubUx+f0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Abbas",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-04-28T20:35:20Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$ea39eOo4RGnQKHmXs17XJ0$E40Se3dL1bypj394c0W3o5PusZgdJ9n9ntpODmLy3nk=",
+    "last_login": "2025-04-28T21:17:10.849Z",
+    "is_superuser": false,
+    "username": "eng1@example.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "eng1@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-04-28T20:41:23.482Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$7RhagVyhrGcWPKGL749zvd$TAP0txO58R5PlW3Gvs0mC0PyYFy0JRN//BgptqdkLis=",
+    "last_login": "2025-04-28T22:12:42.829Z",
+    "is_superuser": false,
+    "username": "tl1@example.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "tl1@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-04-28T20:41:24.413Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$Do3GnZoUMMPmcyGAX9PfbL$YeC5s4rhG/MFIYYi3WFWERln26YlNIC7ts6yHZTMcCM=",
+    "last_login": "2025-04-28T22:11:57.811Z",
+    "is_superuser": false,
+    "username": "dl1@example.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "dl1@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-04-28T20:41:25.327Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$sY5s5BsI7TpQhtINTQcgOl$gtQWW0VlnrL+R2mYNCJE3XRc2lyiEUjDXCkMQlkrumY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sm1@example.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "sm1@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-04-28T20:41:26.244Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$3WMz9ZDrHLNx3yeEfWoNja$MoPNmsnNqLtvNJR5/Au8WjbzAaDUkwe2kjTReZcYd9M=",
+    "last_login": "2025-04-28T21:48:00.092Z",
+    "is_superuser": false,
+    "username": "alii@gmail.com",
+    "first_name": "ali",
+    "last_name": "",
+    "email": "alii@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-28T21:47:40.965Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "Ali"
+    ],
+    "role": "Engineer",
+    "team": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "Hossein"
+    ],
+    "role": "Engineer",
+    "team": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "Abbas"
+    ],
+    "role": "Engineer",
+    "team": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "eng1@example.com"
+    ],
+    "role": "Engineer",
+    "team": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "tl1@example.com"
+    ],
+    "role": "Engineer",
+    "team": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "dl1@example.com"
+    ],
+    "role": "Department Leader",
+    "team": null,
+    "department": "HR"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "sm1@example.com"
+    ],
+    "role": "Senior Manager",
+    "team": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "alii@gmail.com"
+    ],
+    "role": "Admin",
+    "team": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "admin@gmail.com"
+    ],
+    "role": "Engineer",
+    "team": null,
+    "department": null
+  }
+},
+{
+  "model": "voting.department",
+  "pk": 1,
+  "fields": {
+    "name": "HR"
+  }
+},
+{
+  "model": "voting.department",
+  "pk": 2,
+  "fields": {
+    "name": "Engineering"
+  }
+},
+{
+  "model": "voting.department",
+  "pk": 3,
+  "fields": {
+    "name": "Marketing"
+  }
+},
+{
+  "model": "voting.department",
+  "pk": 4,
+  "fields": {
+    "name": "Design"
+  }
+},
+{
+  "model": "voting.department",
+  "pk": 5,
+  "fields": {
+    "name": "Sales"
+  }
+},
+{
+  "model": "voting.team",
+  "pk": 1,
+  "fields": {
+    "name": "Team Alpha",
+    "department": 1
+  }
+},
+{
+  "model": "voting.team",
+  "pk": 2,
+  "fields": {
+    "name": "Team Beta",
+    "department": 2
+  }
+},
+{
+  "model": "voting.team",
+  "pk": 3,
+  "fields": {
+    "name": "Team Gamma",
+    "department": 3
+  }
+},
+{
+  "model": "voting.team",
+  "pk": 4,
+  "fields": {
+    "name": "Team Delta",
+    "department": 4
+  }
+},
+{
+  "model": "voting.team",
+  "pk": 5,
+  "fields": {
+    "name": "Team Epsilon",
+    "department": 5
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 1,
+  "fields": {
+    "name": "Delivering Value",
+    "description": "Are we delivering value to our customers effectively?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 2,
+  "fields": {
+    "name": "Easy to Release",
+    "description": "Is our release process streamlined and efficient?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 4,
+  "fields": {
+    "name": "Fun",
+    "description": "Are team members enjoying their work and maintaining morale?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 5,
+  "fields": {
+    "name": "Health of Codebase",
+    "description": "Is our codebase clean, maintainable, and free of technical debt?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 6,
+  "fields": {
+    "name": "Learning",
+    "description": "Are we continuously learning and improving our skills?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 7,
+  "fields": {
+    "name": "Mission",
+    "description": "Do we understand and align with our team's mission and goals?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 8,
+  "fields": {
+    "name": "Pawns or Players",
+    "description": "Do team members feel empowered to make decisions or merely follow orders?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 9,
+  "fields": {
+    "name": "Speed",
+    "description": "Are we delivering work at a sustainable and efficient pace?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 10,
+  "fields": {
+    "name": "Suitable Process",
+    "description": "Are our processes well-defined and effective?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 11,
+  "fields": {
+    "name": "Support",
+    "description": "Do we receive adequate support from stakeholders and leadership?"
+  }
+},
+{
+  "model": "voting.healthcard",
+  "pk": 12,
+  "fields": {
+    "name": "Teamwork",
+    "description": "Are we collaborating effectively as a team?"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 1,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 2,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 3,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 4,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 5,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 6,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 7,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 8,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 9,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 10,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 11,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 12,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 13,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 14,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Closed"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 15,
+  "fields": {
+    "date": "2025-04-28",
+    "status": "Closed"
+  }
+}
+]
