@@ -103,14 +103,18 @@ def submit_vote(request, card_id):
     prev_card_id = cards[current_index - 1].id if current_index > 0 else None
     next_card_id = cards[current_index + 1].id if current_index + 1 < total_cards else None
 
+    progress_percentage = int(((current_index + 1) / total_cards) * 100)
+
     return render(request, 'voting/submit_vote.html', {
-        'form': form,
-        'card': card,
-        'current_index': current_index + 1,
-        'total_cards': total_cards,
-        'prev_card_id': prev_card_id,
-        'next_card_id': next_card_id,
-    })
+    'form': form,
+    'card': card,
+    'current_index': current_index + 1,
+    'total_cards': total_cards,
+    'prev_card_id': prev_card_id,
+    'next_card_id': next_card_id,
+    'progress_percentage': progress_percentage,  # <<< ADD THIS
+})
+
 
 
 # Displays tutorial/instruction page

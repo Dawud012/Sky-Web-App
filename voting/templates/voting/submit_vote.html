@@ -6,15 +6,12 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Submit Vote{% endblock %}</title>
-
-  {# main stylesheet for layout and styling #}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
 <body>
 
-  {# shared navbar across pages #}
   {% include 'includes/navBar.html' %}
+
   <div class="container">
 
     <h2 class="card-title">{{ card.name }}</h2>
@@ -22,13 +19,10 @@
     <form method="post" action="{% url 'submit_vote' card.id %}" class="vote-form">
       {% csrf_token %}
 
-     
-      {# prompt to help user understand what they're voting on #}
       <div class="card-instructions">
         <p><strong>Click one of the colours depending on how <span class="highlight">you</span> feel:</strong></p>
       </div>
 
-      {# colour rating section #}
       <div class="color-circles">
         {% for radio in form.color %}
           <label class="color-circle-option {{ radio.choice_label|lower }}">
@@ -47,7 +41,6 @@
         {% endfor %}
       </div>
 
-      {# progress state  #}
       <div class="form-group">
         <label>Select a state:</label>
         <div class="progress-radio-group">
@@ -60,13 +53,11 @@
         </div>
       </div>
 
-      {# comment box for optional feedback #}
       <div class="form-group">
         <label for="{{ form.note.id_for_label }}">Comments:</label>
         {{ form.note|add_class:"comment-box" }}
       </div>
 
-      {# back and next navigation buttons #}
       <div class="navigation-buttons">
         {% if prev_card_id %}
           <a href="{% url 'submit_vote' prev_card_id %}" class="button button-blue">Back</a>
@@ -75,11 +66,29 @@
       </div>
     </form>
 
-    {# current progress shown below form #}
-    <div class="progress-info">
-      <p>Card {{ current_index }} of {{ total_cards }}</p>
+    <div class="progress-info mt-4 text-center">
+      <p><strong>Card {{ current_index }} of {{ total_cards }}</strong></p>
+      <p><strong>Progress: {{ progress_percentage|default:"0" }}%</strong></p>
+
+      <!-- native <progress> bar -->
+      <progress
+        id="progress-bar"
+        class="sky-progress"
+        max="100"
+        value="{{ progress_percentage|default:"0" }}"
+      ></progress>
     </div>
 
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var bar = document.getElementById('progress-bar');
+      if (!bar) return;
+      // ensure it's numeric
+      var pct = parseInt('{{ progress_percentage|default:"0" }}', 10) || 0;
+      bar.value = pct;
+    });
+  </script> 
+
 </body>
 </html>

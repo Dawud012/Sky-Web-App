@@ -153,6 +153,26 @@ form label {
   margin-top: 20px;
 }
 
+
+.progress-bar-container {
+  width: 70%;
+  height: 20px;                /* a bit taller */
+  background-color: #ddd;      /* darker grey */
+  border: 1px solid #ccc;      /* add a subtle border */
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem auto;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--sky-blue);
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 10px 0 0 10px;
+}
+
+
 /* Color Circles (Model Style) */
 .color-circles {
   display: flex;
@@ -269,6 +289,36 @@ form label {
   height: 8px;
   background-color: var(--sky-blue);
   border-radius: 50%;
+}
+
+/* native <progress> bar styling */
+.sky-progress {
+  display: block;
+  width: 70%;
+  height: 20px;
+  margin: 1rem auto;
+  border: none;           
+  border-radius: 10px;
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+/* Chrome/WebKit track + fill */
+.sky-progress::-webkit-progress-bar {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+.sky-progress::-webkit-progress-value {
+  background-color: var(--sky-blue);
+  border-radius: 10px 0 0 10px;
+  transition: width 0.5s ease;
+}
+
+/* Firefox fill */
+.sky-progress::-moz-progress-bar {
+  background-color: var(--sky-blue);
+  border-radius: 10px 0 0 10px;
+  transition: width 0.5s ease;
 }
 
 /* Custom select dropdown */
