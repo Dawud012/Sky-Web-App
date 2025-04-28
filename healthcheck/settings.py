@@ -113,6 +113,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+FIXTURE_DIRS = [
+    os.path.join(BASE_DIR),  # This is your project root
+]
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

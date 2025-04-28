@@ -30,7 +30,8 @@ class VoteForm(forms.ModelForm):
 class StartVotingForm(forms.Form):  
     department = forms.ModelChoiceField(
         queryset=Department.objects.all(),
-        label="Select Department"
+        label="Select Department",
+        required=False 
     )
     team = forms.ModelChoiceField(
         queryset=Team.objects.all(),

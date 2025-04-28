@@ -4,7 +4,15 @@ from .forms import StartVotingForm, VoteForm
 from .models import HealthCard, Session, Team, Vote
 from datetime import date
 
-# First step in voting: user picks a team, and we create a new session
+# Map team IDs to departments (adjust based on your models if needed)
+TEAM_DEPARTMENTS = {
+    '1': 'HR',
+    '2': 'Engineering',
+    '3': 'Marketing',
+    '4': 'Design',
+    '5': 'Sales'
+}
+
 # First step in voting: user picks a team, and we create a new session
 @login_required
 def start_voting(request):
@@ -12,18 +20,29 @@ def start_voting(request):
         form = StartVotingForm(request.POST)
         if form.is_valid():
             team = form.cleaned_data['team']
-            request.session['selected_team_id'] = team.id  # store team ID in session for use later
+            department = team.department  # assign department based on team
 
-            # make a new voting session and save it
+            request.session['selected_team_id'] = team.id
             session = Session.objects.create(date=date.today(), status='Active')
-            request.session['vote_session_id'] = session.id  # keep session ID in browser session
+            request.session['vote_session_id'] = session.id
 
-            # grab the first health card and send the user there
             first_card = HealthCard.objects.order_by('id').first()
             if first_card:
                 return redirect('tutorial')
+            else:
+                return redirect('start_voting')
+        else:
+            # Form is invalid: try to prepopulate the department
+            team_id = request.POST.get('team')
+            if team_id:
+                try:
+                    team = Team.objects.get(id=team_id)
+                    form.fields['department'].initial = team.department
+                except Team.DoesNotExist:
+                    pass
     else:
         form = StartVotingForm()
+
 
     return render(request, 'voting/start_voting.html', {'form': form})
 
