@@ -3,18 +3,13 @@ from django.contrib.auth.decorators import login_required
 from .forms import StartVotingForm, VoteForm
 from .models import HealthCard, Session, Team, Vote
 from datetime import date
+from accounts.decorators import restrict_to_roles
+from accounts.models import Profile
 
-# Map team IDs to departments (adjust based on your models if needed)
-TEAM_DEPARTMENTS = {
-    '1': 'HR',
-    '2': 'Engineering',
-    '3': 'Marketing',
-    '4': 'Design',
-    '5': 'Sales'
-}
 
 # First step in voting: user picks a team, and we create a new session
 @login_required
+@restrict_to_roles(Profile.ENGINEER, Profile.TEAM_LEADER)
 def start_voting(request):
     if request.method == "POST":
         form = StartVotingForm(request.POST)
@@ -51,6 +46,7 @@ def start_voting(request):
 
 # Handles the actual voting for each health card
 @login_required
+@restrict_to_roles(Profile.ENGINEER, Profile.TEAM_LEADER)
 def submit_vote(request, card_id):
     # get session and team IDs from the browser session
     session_id = request.session.get('vote_session_id')
@@ -90,7 +86,7 @@ def submit_vote(request, card_id):
             if next_card:
                 return redirect('submit_vote', card_id=next_card.id)
             else:
-                # voting done — mark session as closed and clean up session data
+                # voting is done — mark session as closed 
                 session.status = 'Closed'
                 session.save()
                 request.session.pop('vote_session_id', None)
@@ -99,7 +95,7 @@ def submit_vote(request, card_id):
     else:
         form = VoteForm(instance=existing_vote)
 
-    # context passed to template for rendering form and nav buttons
+    # passed to template for rendering form and nav buttons
     prev_card_id = cards[current_index - 1].id if current_index > 0 else None
     next_card_id = cards[current_index + 1].id if current_index + 1 < total_cards else None
 
@@ -112,30 +108,25 @@ def submit_vote(request, card_id):
     'total_cards': total_cards,
     'prev_card_id': prev_card_id,
     'next_card_id': next_card_id,
-    'progress_percentage': progress_percentage,  # <<< ADD THIS
+    'progress_percentage': progress_percentage, 
 })
 
 
-
-# Displays tutorial/instruction page
-def tutorial_view(request):
-    return render(request, 'voting/tutorial.html')
-
-
-# After the user is done reading the tutorial, it redirects them to the voting page
+# Tutorial (after choosing team)
 @login_required
+@restrict_to_roles(Profile.ENGINEER, Profile.TEAM_LEADER)
 def tutorial_view(request):
     if request.method == "POST":
-        first_card = HealthCard.objects.order_by('id').first()
-        if first_card:
-            return redirect('submit_vote', card_id=first_card.id)
-    
+        first = HealthCard.objects.order_by('id').first()
+        return redirect('submit_vote', card_id=first.id) if first else redirect('start_voting')
     return render(request, 'voting/tutorial.html')
+
 
 
 
 # After a user finishes voting, show them a simple thank you page
 @login_required
+@restrict_to_roles(Profile.ENGINEER, Profile.TEAM_LEADER)
 def thank_you(request):
     return render(request, 'voting/thank_you.html')
 
