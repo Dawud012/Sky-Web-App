@@ -674,3 +674,30 @@ form label {
   border: 3px solid var(--sky-blue);
   margin-bottom: 1rem;
 }
+
+
+/* RESPONSIVE PROFILE PAGE      */
+
+
+@media (max-width: 768px) {
+  .profile-card {
+    width: 90%;
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-info li {
+    font-size: 0.95rem;
+  }
+
+  .profile-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
