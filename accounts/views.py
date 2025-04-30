@@ -5,6 +5,7 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth import authenticate, login, logout
 from accounts.models import Profile
 from voting.models import HealthCard 
+from django.contrib.auth.decorators import login_required
 
 # Welcome page
 def welcome_view(request):
@@ -107,13 +108,15 @@ def reset_password(request):
     return render(request, 'accounts/reset_password.html', {'email_sent': email_sent})
 
 # Profile page
+@login_required
 def profile_view(request):
     user = request.user
-    prof = user.profile
+    profile = user.profile 
+
+    
+
     return render(request, 'accounts/profile.html', {
-        'name': user.first_name,
-        'email': user.email,
-        'team': prof.team,
-        'department': prof.department,
-        'role': prof.role,
+        'user': user,
+        'profile': profile,
     })
+
