@@ -1,82 +1,82 @@
-{% extends "base.html" %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    .password-wrapper {
+      position: relative;
+      width: 100%;
+    }
 
-{% block title %}Login{% endblock %}
+    .password-wrapper input {
+      padding-right: 40px;
+    }
 
-{% block content %}
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--input-border);
+      font-size: 18px;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
 
-<style>
-  .password-wrapper {
-    position: relative;
-    width: 100%;
-  }
+  {% include 'includes/navBar.html' %}
+  <div class="pink-divider"></div>
 
-  .password-wrapper input {
-    padding-right: 40px;
-  }
+  <div class="form-container">
+    <h2 class="card-title">Login</h2>
 
-  .toggle-password {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: var(--input-border);
-    font-size: 18px;
-    user-select: none;
-  }
-</style>
+    {% if messages %}
+      <ul style="color: red;">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
 
-<div class="form-container">
-  <h2 class="card-title">Login</h2>
-
-  <!-- Styled messages block -->
-  {% if messages %}
-    <ul style="color: red;">
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  <form method="POST" action="{% url 'login' %}">
-    {% csrf_token %}
-
-    <!-- Email -->
-    <div class="form-row">
-      <label for="email">Email Address</label>
-      <input type="email" name="email" id="email" placeholder="Email Address" required>
-    </div>
-
-    <!-- Password -->
-    <div class="form-row">
-      <label for="password">Password</label>
-      <div class="password-wrapper">
-        <input type="password" name="password" id="password" placeholder="Password" required>
-        <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class="form-row">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" placeholder="Email Address" required>
       </div>
-    </div>
 
-    <!-- Forgot Password -->
-    <p style="margin-top: 10px; color: gray; text-align: left;">
-      Forgot password?
-      <a href="{% url 'reset-password' %}" style="color: var(--sky-pink); font-weight: bold;">Reset</a>
-    </p>
+      <div class="form-row">
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" name="password" id="password" placeholder="Password" required>
+          <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+        </div>
+      </div>
 
-    <!-- Submit Button -->
-    <div class="form-actions">
-      <button type="submit" class="button">Login</button>
-    </div>
-  </form>
-</div>
+      <p style="margin-top: 10px; color: gray; text-align: left;">
+        Forgot password?
+        <a href="{% url 'reset-password' %}" style="color: var(--sky-pink); font-weight: bold;">Reset</a>
+      </p>
 
-<script>
-  function togglePassword(fieldId, icon) {
-    const input = document.getElementById(fieldId);
-    const type = input.type === "password" ? "text" : "password";
-    input.type = type;
-    icon.textContent = type === "password" ? "👁️" : "🙈";
-  }
-</script>
+      <div class="form-actions">
+        <button type="submit" class="button">Login</button>
+      </div>
+    </form>
+  </div>
 
-{% endblock %}
+  <script>
+    function togglePassword(fieldId, icon) {
+      const input = document.getElementById(fieldId);
+      const type = input.type === "password" ? "text" : "password";
+      input.type = type;
+      icon.textContent = type === "password" ? "👁️" : "🙈";
+    }
+  </script>
+
+</body>
+</html>
