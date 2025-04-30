@@ -15,7 +15,12 @@ def start_voting(request):
         form = StartVotingForm(request.POST)
         if form.is_valid():
             team = form.cleaned_data['team']
-            department = team.department  # assign department based on team
+            department = team.department  
+
+            profile = request.user.profile
+            profile.team = team.name  
+            profile.department = department.name  
+            profile.save()
 
             request.session['selected_team_id'] = team.id
             session = Session.objects.create(date=date.today(), status='Active')
