@@ -4,7 +4,8 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<div class="form-container">
+<section class="profile-card">
+  <img src="{% static 'images/default-profile.png' %}" alt="Profile Picture" class="profile-picture">
   <h2 class="card-title">Your Profile</h2>
   <ul class="profile-info">
     <li><strong>Name:</strong> {{ name }}</li>
@@ -12,5 +13,5 @@
     <li><strong>Team:</strong> {{ team }}</li>
     <li><strong>Department:</strong> {{ department }}</li>
   </ul>
-</div>
+</section>
 {% endblock %}
