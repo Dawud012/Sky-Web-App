@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
 
 
 class Profile(models.Model):
@@ -23,6 +21,7 @@ class Profile(models.Model):
 
     user       = models.OneToOneField(User, on_delete=models.CASCADE)
     role       = models.CharField(max_length=20, choices=ROLE_CHOICES, default=ENGINEER)
+    # These can be ForeignKey to Team if needed, or keep as CharField
     team       = models.CharField(max_length=100, blank=True, null=True)
     department = models.CharField(max_length=100, blank=True, null=True)
 
@@ -34,5 +33,6 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     # Create profile when new User is created
     profile, was_created = Profile.objects.get_or_create(user=instance)
     if was_created:
-        profile.role = 'Engineer'
+        # Use the constant instead of string
+        profile.role = Profile.ENGINEER
         profile.save()

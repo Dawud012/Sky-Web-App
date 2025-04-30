@@ -1,10 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from accounts.models import Profile  # Import Profile from accounts
 
 
-# Department & Team
-
-
+# Department & Team models - these can stay in voting app
 class Department(models.Model):
     name = models.CharField(max_length=100)
 
@@ -23,30 +22,7 @@ class Team(models.Model):
 # Represents a team that belongs to a department.
 
 
-# UserProfile (extension of default User)
-
-
-class UserProfile(models.Model):
-    ROLE_CHOICES = [
-        ('Engineer', 'Engineer'),
-        ('Team Leader', 'Team Leader'),
-        ('Department Leader', 'Department Leader'),
-        ('Senior Manager', 'Senior Manager'),
-    ]
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
-    team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.user.username} - {self.role}"
-
-
-
-
-
 # Health Check System
-
 
 class HealthCard(models.Model):
     name = models.CharField(max_length=100)
