@@ -5,7 +5,6 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth import authenticate, login, logout
 from accounts.models import Profile
 from voting.models import HealthCard 
-from django.contrib.auth.decorators import login_required
 
 # Welcome page
 def welcome_view(request):
@@ -30,12 +29,43 @@ def register_view(request):
         user = User.objects.create_user(username=email, email=email, password=password1)
         user.first_name = full_name
         user.save()
-        
-        # set default role using the constant
+        # set default role
         user.profile.role = Profile.ENGINEER
         user.profile.save()
 
         messages.success(request, "Account created successfully. You can now log in.")
+        return redirect('login')
+
+    return render(request, 'accounts/register.html')
+
+# Staff Registration view (handles form + saving to database)
+def staff_register(request):
+    if request.method == 'POST':
+        full_name = request.POST.get('name')
+        email = request.POST.get('email')
+        password1 = request.POST.get('password')
+        password2 = request.POST.get('confirm_password')
+
+        # Check passwords match
+        if password1 != password2:
+            messages.error(request, "Passwords do not match.")
+            return redirect('staff_register')
+
+        # Check if email is already registered
+        if User.objects.filter(username=email).exists():
+            messages.error(request, "Email already registered.")
+            return redirect('staff_register')
+
+        # Create staff user
+        user = User.objects.create_user(username=email, email=email, password=password1)
+        user.first_name = full_name
+        user.is_staff = True
+        user.save()
+        # grant admin role
+        user.profile.role = Profile.ADMIN
+        user.profile.save()
+
+        messages.success(request, "Staff account created.")
         return redirect('login')
 
     return render(request, 'accounts/register.html')
@@ -49,36 +79,25 @@ def login_view(request):
 
         if user:
             login(request, user)
-            
-            # Print debug info temporarily
-            print(f"User logged in: {user.username}, Role: {user.profile.role}")
-            
-            # Check if superuser first (admin created via terminal)
-            if user.is_superuser:
-                return redirect('admin:index')
-            
-            # Get role from profile and use constants for comparison
             role = user.profile.role
-            
-            # Engineers and team-leaders → voting
-            if role in (Profile.ENGINEER, Profile.TEAM_LEADER):
+
+            # engineers and team-leaders → voting
+            if role in ('Engineer', 'Team Leader'):
                 return redirect('start_voting')
 
-            # dept-leaders & senior managers → trends
-            elif role in (Profile.DEPT_LEADER, Profile.SENIOR_MANAGER):
+           # dept-leaders & senior managers
+            if role in ('Department Leader', 'Senior Manager'):
                 return redirect('trends')
 
-            # admin → django admin (only if they have staff permission)
-            elif role == Profile.ADMIN and user.is_staff:
+            # admin → django admin
+            if user.is_staff:
                 return redirect('admin:index')
-                
-            # Default fallback - go to profile page
-            else:
-                return redirect('profile')
 
         messages.error(request, "Invalid credentials")
 
     return render(request, 'accounts/login.html')
+
+
 
 # Logout
 def logout_view(request):
@@ -108,15 +127,13 @@ def reset_password(request):
     return render(request, 'accounts/reset_password.html', {'email_sent': email_sent})
 
 # Profile page
-@login_required
 def profile_view(request):
     user = request.user
-    profile = user.profile 
-
-    
-
+    prof = user.profile
     return render(request, 'accounts/profile.html', {
-        'user': user,
-        'profile': profile,
+        'name': user.first_name,
+        'email': user.email,
+        'team': prof.team,
+        'department': prof.department,
+        'role': prof.role,
     })
-

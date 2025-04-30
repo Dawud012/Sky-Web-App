@@ -23,6 +23,20 @@
       color: var(--input-border);
       font-size: 18px;
     }
+
+    .password-rules {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .password-rules li {
+      color: red;
+    }
+
+    .password-rules li.valid {
+      color: green;
+    }
   </style>
 </head>
 <body>
@@ -62,6 +76,13 @@
           <input type="password" name="password" id="password" placeholder="Enter Password" required>
           <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
         </div>
+        <ul class="password-rules" id="passwordRules">
+          <li id="length">At least 8 characters</li>
+          <li id="uppercase">At least one uppercase letter</li>
+          <li id="lowercase">At least one lowercase letter</li>
+          <li id="number">At least one number</li>
+          <li id="symbol">At least one special character</li>
+        </ul>
       </div>
 
       <!-- Confirm Password -->
@@ -86,7 +107,7 @@
     </form>
   </div>
 
-  <!-- Password Toggle Script -->
+  <!-- JavaScript -->
   <script>
     function togglePassword(fieldId, icon) {
       const input = document.getElementById(fieldId);
@@ -95,13 +116,31 @@
       icon.textContent = type === "password" ? "👁️" : "🙈";
     }
 
+    const password = document.getElementById('password');
+    password.addEventListener('input', function () {
+      const value = password.value;
+      document.getElementById('length').classList.toggle('valid', value.length >= 8);
+      document.getElementById('uppercase').classList.toggle('valid', /[A-Z]/.test(value));
+      document.getElementById('lowercase').classList.toggle('valid', /[a-z]/.test(value));
+      document.getElementById('number').classList.toggle('valid', /[0-9]/.test(value));
+      document.getElementById('symbol').classList.toggle('valid', /[^A-Za-z0-9]/.test(value));
+    });
+
     const form = document.querySelector("form");
     form.addEventListener("submit", function (e) {
       const pw = document.getElementById("password");
       const cpw = document.getElementById("confirm_password");
+
       if (pw.value !== cpw.value) {
         e.preventDefault();
         alert("Passwords do not match!");
+        return;
+      }
+
+      const valid = document.querySelectorAll('.password-rules li.valid').length === 5;
+      if (!valid) {
+        e.preventDefault();
+        alert("Password does not meet all the strength requirements.");
       }
     });
   </script>
