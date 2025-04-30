@@ -1,3 +1,5 @@
+# Author : Parham Golmohammadi
+
 def user_role(request):
     if request.user.is_authenticated:
         prof = getattr(request.user, 'profile', None)

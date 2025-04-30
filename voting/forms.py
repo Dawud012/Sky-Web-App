@@ -1,3 +1,5 @@
+# Author : Parham Golmohammadi
+
 from .models import Department, Team, Vote
 from django import forms
 

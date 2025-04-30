@@ -1,3 +1,6 @@
+# Author : Dawud
+# Co-Author : Parham Golmohammadi
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -31,19 +34,15 @@ def register_view(request):
         user = User.objects.create_user(username=email, email=email, password=password1)
         user.first_name = full_name
         user.save()
-<<<<<<< HEAD
         # set default role
-        user.profile.role = Profile.ENGINEER
-        user.profile.save()
-=======
-        
+       
+
         # set default role using the constant
         profile = user.profile
         profile.role = Profile.ENGINEER
         profile.team = team
         profile.department = department
         profile.save()
->>>>>>> d6e32b3 (Update profile with team and department on start voting)
 
         messages.success(request, "Account created successfully. You can now log in.")
         return redirect('login')

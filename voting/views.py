@@ -1,3 +1,4 @@
+# Author : Parham Golmohammadi
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import StartVotingForm, VoteForm
@@ -116,7 +117,7 @@ def submit_vote(request, card_id):
     'progress_percentage': progress_percentage, 
 })
 
-
+# Author : Aleena
 # Tutorial (after choosing team)
 @login_required
 @restrict_to_roles(Profile.ENGINEER, Profile.TEAM_LEADER)

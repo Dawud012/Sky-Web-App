@@ -1,3 +1,5 @@
+# Author : Parham Golmohammadi
+
 from django.contrib import admin
 from .models import Department, Team,  HealthCard, Session, Vote
 
