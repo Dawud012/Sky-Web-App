@@ -116,7 +116,11 @@ STATICFILES_DIRS = [
 ]
 
 FIXTURE_DIRS = [
+<<<<<<< HEAD
     os.path.join(BASE_DIR),  # This is your project root
+=======
+    os.path.join(BASE_DIR, 'fixtures'),
+>>>>>>> 5ff8243 (Reconnect project and loaded fixtures)
 ]
 
 # Default primary key field type

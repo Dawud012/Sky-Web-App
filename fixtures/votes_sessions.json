@@ -1,0 +1,169 @@
+[
+{
+  "model": "voting.session",
+  "pk": 1,
+  "fields": {
+    "date": "2025-04-30",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 2,
+  "fields": {
+    "date": "2025-04-30",
+    "status": "Closed"
+  }
+},
+{
+  "model": "voting.session",
+  "pk": 3,
+  "fields": {
+    "date": "2025-04-30",
+    "status": "Active"
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 1,
+  "fields": {
+    "color": "Yellow",
+    "progress": "Stable",
+    "note": "",
+    "card": 1,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 2,
+  "fields": {
+    "color": "Red",
+    "progress": "Declining",
+    "note": "",
+    "card": 2,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 3,
+  "fields": {
+    "color": "Green",
+    "progress": "Stable",
+    "note": "",
+    "card": 4,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 4,
+  "fields": {
+    "color": "Red",
+    "progress": "Improving",
+    "note": "",
+    "card": 5,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 5,
+  "fields": {
+    "color": "Yellow",
+    "progress": "Declining",
+    "note": "",
+    "card": 6,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 6,
+  "fields": {
+    "color": "Green",
+    "progress": "Improving",
+    "note": "",
+    "card": 7,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 7,
+  "fields": {
+    "color": "Yellow",
+    "progress": "Stable",
+    "note": "",
+    "card": 8,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 8,
+  "fields": {
+    "color": "Red",
+    "progress": "Declining",
+    "note": "",
+    "card": 9,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 9,
+  "fields": {
+    "color": "Yellow",
+    "progress": "Declining",
+    "note": "",
+    "card": 10,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 10,
+  "fields": {
+    "color": "Yellow",
+    "progress": "Improving",
+    "note": "",
+    "card": 11,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+},
+{
+  "model": "voting.vote",
+  "pk": 11,
+  "fields": {
+    "color": "Green",
+    "progress": "Declining",
+    "note": "",
+    "card": 12,
+    "user": 1,
+    "team": 3,
+    "session": 2
+  }
+}
+]
